@@ -23,7 +23,7 @@ Implementation of inheritance, MVC, Dependency Injection, encapsulation to hide 
 <br>
 
 ## PROJECT DIAGRAM
-![Flowchart](./images/Diagrama Galleria.PNG)
+![Flowchart](./images/image1.PNG)
 <hr>
 <br>
 
