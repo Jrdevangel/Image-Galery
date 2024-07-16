@@ -15,6 +15,10 @@ public class ImageGalleryController {
     @Autowired
     private ImageGalleryService imageGalleryService;
 
+    @GetMapping(path = "/images")
+    public ArrayList<Image> getAllImages() {
+        return imageGalleryService.getAllImages();
+    }
     @PutMapping(path = "/images/{id}")
     public Image updateImage(@PathVariable("id") int id, @RequestBody Image updatedImage) {
         return imageGalleryService.updateImage(id, updatedImage);

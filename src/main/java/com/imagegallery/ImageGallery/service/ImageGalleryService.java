@@ -14,6 +14,9 @@ public class ImageGalleryService {
     @Autowired
     private IImageGalleryRepository iImageGalleryRepository;
 
+    public ArrayList<Image> getAllImages() {
+        return (ArrayList<Image>) iImageGalleryRepository.findAll();
+    }
     public Image updateImage(int id, Image updatedImage) {
         Optional<Image> optionalTask = iImageGalleryRepository.findById(id);
         if (optionalTask.isPresent()) {
