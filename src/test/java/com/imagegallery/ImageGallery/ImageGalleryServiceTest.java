@@ -15,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import static org.mockito.Mockito.*;
-//import static org.mockito.Mockito.any;
-//import static org.mockito.Mockito.when;
 
 class ImageGalleryServiceTest {
 
@@ -50,13 +48,10 @@ class ImageGalleryServiceTest {
         images.add(image1);
         images.add(image2);
 
-        // Configurar el comportamiento simulado del repositorio
         when(iImageGalleryRepository.findAll()).thenReturn(images);
 
-        // Llamar al método bajo prueba
         ArrayList<Image> result = imageGalleryService.getAllImages();
 
-        // Verificar el resultado
         assertEquals(2, result.size());
         assertEquals(image1, result.get(0));
         assertEquals(image2, result.get(1));
@@ -76,27 +71,22 @@ class ImageGalleryServiceTest {
         updatedImage.setDescription("New Description");
         updatedImage.setUrl("http://example.com/new-image.jpg");
 
-        // Configurar el comportamiento simulado del repositorio
         when(iImageGalleryRepository.findById(1)).thenReturn(Optional.of(existingImage));
         when(iImageGalleryRepository.save(any(Image.class))).thenReturn(existingImage);
 
-        // Llamar al método bajo prueba
         Image result = imageGalleryService.updateImage(1, updatedImage);
 
-        // Verificar el resultado
         assertEquals("New Description", result.getDescription());
         assertEquals("http://example.com/new-image.jpg", result.getUrl());
     }
 
     @Test
     void testUpdateImageWhenImageDoesNotExist() {
-        // Configurar el comportamiento simulado del repositorio
+
         when(iImageGalleryRepository.findById(1)).thenReturn(Optional.empty());
 
-        // Llamar al método bajo prueba
-        Image result = imageGalleryService.updateImage(1, new Image());
+       Image result = imageGalleryService.updateImage(1, new Image());
 
-        // Verificar el resultado
-        assertNull(result);
+       assertNull(result);
     }
 }

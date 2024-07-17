@@ -44,7 +44,7 @@ public class ImageGalleryControllerTest {
         image.setDescription("Test Description");
         image.setUrl("http://example.com/image.jpg");
 
-        // When the service is called, return a list with one image
+
         when(imageGalleryService.getAllImages()).thenReturn(new ArrayList<>(List.of(image)));
 
         // Perform the GET request and check the response
@@ -70,14 +70,14 @@ public class ImageGalleryControllerTest {
         updatedImage.setDescription("Updated Description");
         updatedImage.setUrl("http://example.com/new_image.jpg");
 
-        // When the service is called, return the updated image
+
         when(imageGalleryService.updateImage(anyInt(), any(Image.class))).thenReturn(updatedImage);
 
-        // Convert the updated image to JSON
+
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(updatedImage);
 
-        // Perform the PUT request and check the response
+
         mockMvc.perform(put("/api/v1/images/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
