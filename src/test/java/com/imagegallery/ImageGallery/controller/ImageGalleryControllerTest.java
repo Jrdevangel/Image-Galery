@@ -15,6 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
@@ -55,5 +58,18 @@ public class ImageGalleryControllerTest {
                 .andExpect(jsonPath("$.title").value("Sample Image"))
                 .andExpect(jsonPath("$.description").value("Sample Description"))
                 .andExpect(jsonPath("$.url").value("http://example.com/image.jpg"));
+    }
+
+    @Test
+    public void testDeleteImage() throws Exception {
+        Integer imageId = 1;
+
+        doNothing().when(imageGalleryService).deleteImage(imageId);
+
+        mockMvc.perform(delete("/api/v1/images/{id}", imageId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        verify(imageGalleryService).deleteImage(imageId);
     }
 }

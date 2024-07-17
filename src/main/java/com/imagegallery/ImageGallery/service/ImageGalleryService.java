@@ -14,4 +14,8 @@ public class ImageGalleryService {
     public Image addNewImage(Image image){
         return iImageGalleryRepository.save(image);
     }
+
+    public void deleteImage(Integer id){
+            iImageGalleryRepository.deleteById(id);
+    }
 }

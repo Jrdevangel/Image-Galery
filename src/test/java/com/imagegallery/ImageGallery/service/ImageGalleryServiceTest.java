@@ -10,7 +10,8 @@ import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ImageGalleryServiceTest {
 
@@ -41,5 +42,14 @@ public class ImageGalleryServiceTest {
         assertEquals(image.getTitle(), result.getTitle());
         assertEquals(image.getDescription(), result.getDescription());
         assertEquals(image.getUrl(), result.getUrl());
+    }
+
+    @Test
+    public void testDeleteImage() {
+        Integer imageId = 1;
+
+        imageGalleryService.deleteImage(imageId);
+
+        verify(iImageGalleryRepository).deleteById(imageId);
     }
 }
