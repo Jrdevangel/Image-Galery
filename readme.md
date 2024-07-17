@@ -1,42 +1,42 @@
-<hr>
-<br>
-
-## USER STORY
-
-- **Title** Image Gallery
-- **As** Image Gallery platform user
-- **I want** to be able to manage images easily and efficiently
-- **To** be able to access a list of favorite images in an organized and personalized way
-
-#### Criteria of acceptance:
-
-***Add Images***
-
-- ***Given:*** I am a user with creation permissions,
-- ***When:*** I navigate to the Image Gallery page,
-- ***So:*** I can fill out a form with the title and description and the image url,
-- ***And:*** When you submit the form, the image is added to the database and appears in the favourites images list.
-
+# IMAGE GALLERY
 <hr>
 
 <br>
 
-## PSEUDOCODE
+## Development Description
 
-#### Image Gallery Controller
-    Define function addNewImage with POST method at the path "/images"
-    Receive Image object in the request body (RequestBody)
+It is developed in JAVA Backend component that allows the user to manage an image gallery. Users can upload and view images, edit an image, or delete it.
 
-    Call addNewImage function of imageGalleryService passing the Image object
-    Return the result of the service call
+## Expected Features:
 
-#### Image Gallery Service
+### CRUD
 
-    Define function addNewImage in imageGalleryService
-    Receive Image object as a parameter
+**Create:** Allows you to add images to the database.
+- **Read:** Allows you to view a list of images (image and title). 
+- **Update:** Allows you to edit an existing image.
+- **Delete:** Allows you to delete images from the database.
 
-    Call save function of repository iImageGalleryRepository passing the Image object
-    Return the result of the repository call
+### MVC
+Implementation of inheritance, MVC, Dependency Injection, encapsulation to hide the internal implementation of classes and protect data.
 <hr>
 
 <br>
+
+## PROJECT DIAGRAM
+![Flowchart](./images/image.png)
+<hr>
+<br>
+
+### KANBAN
+- https://trello.com/b/M0rbZOUl/image-gallery
+
+<hr>
+
+<br>
+
+### 👥 Collaborators
+
+- https://github.com/miangels1978
+- https://github.com/FJRJ3D
+- https://github.com/israelcs13
+- https://github.com/Jrdevangel
