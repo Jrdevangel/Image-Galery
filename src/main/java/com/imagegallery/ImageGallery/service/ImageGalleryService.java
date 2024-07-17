@@ -21,6 +21,7 @@ public class ImageGalleryService {
         Optional<Image> optionalTask = iImageGalleryRepository.findById(id);
         if (optionalTask.isPresent()) {
             Image existingImage = optionalTask.get();
+            existingImage.setTitle(updatedImage.getTitle());
             existingImage.setDescription(updatedImage.getDescription());
             existingImage.setUrl(updatedImage.getUrl());
 
