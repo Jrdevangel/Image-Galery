@@ -13,6 +13,10 @@ public class ImageGalleryService {
     @Autowired
     IImageGalleryRepository iImageGalleryRepository;
 
+    public Optional<Image> getByImagesById(Integer id) {
+        return iImageGalleryRepository.findById(id);
+    }
+
     public ArrayList<Image> getAllImages() {
         return (ArrayList<Image>) iImageGalleryRepository.findAll();
     }

@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -15,6 +16,16 @@ import java.util.ArrayList;
 public class ImageGalleryController {
     @Autowired
     ImageGalleryService imageGalleryService;
+
+    @GetMapping(path = "/images/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Image> getByImagesById(@PathVariable Integer id) {
+        Optional<Image> image = imageGalleryService.getByImagesById(id);
+        if (image.isPresent()) {
+            return ResponseEntity.ok(image.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @PostMapping (path = "/images")
     public Image addNewImage(@RequestBody Image image){
